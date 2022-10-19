@@ -1,4 +1,7 @@
 mods
 classes
+derby
+zoo
 
 *.class
+*.log
