@@ -30,7 +30,8 @@ public class ExecutorServiceMethods {
     }
     
     if (executor != null) {
-      executor.awaitTermination(15, TimeUnit.SECONDS);
+      boolean terminated = executor.awaitTermination(15, TimeUnit.SECONDS);
+      System.out.println("Executore terminated?: " + terminated);
     }
     System.out.println("End...");
   }
@@ -51,9 +52,10 @@ public class ExecutorServiceMethods {
 
   private static void invokeAny(ExecutorService executor) throws Exception {
     Callable<Integer> task1 = () -> task(2, 5, 2);
-    Callable<Integer> task2 = () -> task(50, 50, 0);
+    Callable<Integer> task2 = () -> task(50, 50, 2);
     Callable<Integer> task3 = () -> task(1, 1, 3);
     Callable<Integer> task4 = () -> task(3, 2, 1);
+    // invokeAny() has an overloaded version that takes a timeout and a TimeUnit
     Integer result = executor.invokeAny(List.of(task1, task2, task3, task4));
 
     System.out.println("Result of the invoked sum task: " + result);
@@ -62,7 +64,7 @@ public class ExecutorServiceMethods {
   private static void invokeAll(ExecutorService executor) throws Exception {
     Callable<Integer> task1 = () -> task(0, 1, 4);
     Callable<Integer> task2 = () -> task(-1, 1, 3);
-
+    // invokeAll() has an overloaded version that takes a timeout and a TimeUnit
     executor.invokeAll(List.of(task1, task2));
   }
 
