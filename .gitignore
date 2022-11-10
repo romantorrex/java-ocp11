@@ -2,6 +2,7 @@ mods
 classes
 derby
 zoo
+out
 
 *.class
 *.log
