@@ -12,9 +12,11 @@ public class ServiceLocator {
   public static Service createService() {
     ServiceLoader<Service> services = ServiceLoader.load(Service.class);
 
-   ServiceLoader.Provider<Service> provider = services.stream().findFirst().orElseThrow(() -> new IllegalStateException("No implementations available."));
+//   ServiceLoader.Provider<Service> provider = services.findFirst().orElseThrow(() -> new IllegalStateException("No implementations available."));
+//
+   return services.findFirst().orElseThrow(() -> new IllegalStateException("No implementations available."));
   
-    return provider.get();
-}
+   //  return provider.get();
+  }
 }
 
