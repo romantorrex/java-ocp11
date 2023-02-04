@@ -21,8 +21,10 @@ public class TryWithResources {
   public static void main(String... args) {
     try (var w = new Window(); var d = new Door()) {
       System.out.println("It is going to rain.");
+      throw new RuntimeException("Original exception.");
     } catch(Exception ex) {
       System.out.println("Nothing happend");
+      ex.printStackTrace();
     } finally {
       System.out.println("Bye.");
     }
