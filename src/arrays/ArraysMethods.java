@@ -28,6 +28,19 @@ public class ArraysMethods {
     System.out.printf("Element %d is at position %d in %s.%n", 40, Arrays.binarySearch(array, 40), Arrays.toString(array));
     
     System.out.printf("Element %d is at position %d in %s.%n", -10, Arrays.binarySearch(array, -10), Arrays.toString(array));
+
+    var small = new char[] {'a','b','c'};
+    var large = new char[] {'a', 'b', 'c', 'd', 'e'};
+
+    System.out.printf("Compare %s and %s is %d.%n", Arrays.toString(small), Arrays.toString(large), Arrays.compare(small, large));
+    System.out.printf("Compare %s and %s is %d.%n", Arrays.toString(large), Arrays.toString(small), Arrays.compare(large,small));
+    
+    small = new char[] {'a','b','z'};
+    large = new char[] {'a', 'b', 'f'};
+    System.out.printf("Compare %s and %s is %d.%n", Arrays.toString(small), Arrays.toString(large), Arrays.compare(small, large));
+    System.out.printf("Compare %s and %s is %d.%n", Arrays.toString(large), Arrays.toString(small), Arrays.compare(large,small));
+    System.out.printf("Mismatch of %s and %s is %d.%n", Arrays.toString(small), Arrays.toString(large), Arrays.mismatch(small, large));
+    System.out.printf("Mismatch of %s and %s is %d.%n", Arrays.toString(small), Arrays.toString(small), Arrays.mismatch(small, small));
   }
 }
 
