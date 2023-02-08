@@ -24,6 +24,18 @@ public class CollectExamples {
       .collect(Collectors.partitioningBy(b -> b.getTotalPages() > 500));
 
     System.out.println("Books with more than 500 pages: " + moreThan500Pages.get(Boolean.TRUE));
+
+    var authors = books.stream()
+      .map(Book::getAuthor)
+      .distinct()
+      .collect(Collectors.joining(", ", "<< ", " >>"));
+
+    System.out.println("All authors: " + authors);
+
+    var booksPerAuthor = books.stream()
+      .collect(Collectors.groupingBy(Book::getAuthor, Collectors.counting()));
+
+    System.out.println("Total books per author:\n" + booksPerAuthor);
   }
 
 }
